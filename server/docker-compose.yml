@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 00000000
+      POSTGRES_DB: tz
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  test:
+    build: .
+    depends_on:
+      - db
+    command: npm test -- --verbose --runInBand
+
+volumes:
+  pgdata:
