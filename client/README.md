@@ -92,12 +92,6 @@ src/
 - `npm run test:coverage`: Run tests with coverage
 - `npm run lint`: Run ESLint
 
-## Docker Commands
-
-Build the image:
-```bash
-docker-compose up
-```
 
 ## Notes
 
